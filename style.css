@@ -1,0 +1,84 @@
+body {
+  background-color: darkgray;
+}
+img {
+  width: 100%;
+}
+section {
+  display: grid;
+  grid-template-columns: 2;
+  gap: 90px;
+  justify-content: center;
+}
+.characters {
+  grid-column: 1;
+  height: 300px;
+  width: 400px;
+  position: relative;
+  background-color: lightgray;
+}
+#headerDiv {
+  background-color: rgb(182, 175, 175);
+  padding: 5px;
+  border: 1px;
+}
+h2 {
+  color: rgb(163, 163, 17);
+  font-weight: bold;
+  text-align: center;
+}
+ul {
+}
+#listDiv {
+  background-color: green;
+  height: 25px;
+  border: 1px solid red;
+}
+li {
+  list-style-type: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+.characters footer {
+}
+.characters footer .fas.fa-angle-left {
+}
+.characters footer .fas.fa-angle-right {
+}
+.details {
+  grid-column: 2;
+  height: 300px;
+  width: 400px;
+  position: relative;
+  background-color: lightgray;
+}
+.details #personDetails {
+}
+.details #description {
+}
+script {
+}
+.characters {
+}
+.characters h4 {
+}
+.characters ul {
+}
+.characters ul li {
+}
+.characters footer {
+}
+.characters footer .fas.fa-angle-left {
+}
+.characters footer .fas.fa-angle-right {
+}
+.details {
+}
+.details h4 {
+}
+.details #personDetails {
+}
+.details #description {
+}
+script {
+}
