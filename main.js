@@ -1,84 +1,125 @@
-const url='https://swapi.dev/api/people/';
-let arr= [];
+const url = 'https://swapi.dev/api/people/';
+const ul = document.querySelector('ul');
+let arr = [];
 
-//#region  Character list
-  function fetchData(){
-       fetch(url).then(  function(res){
-         return res.json();
-     }).then(function(data){ 
-         const peoples= data.results.map(function(item){
-             console.log(item.name);
+// const getData = () => {
+//     fetch(url).
+//         then(res => {
+//             return res.json();
+//         }).
+//         then(data => {
+//             data.results.map(item => {
+//                 let properties = {
+//                     name: item.name,
+//                     mass: item.mass,
+//                     height: item.height,
+//                     gender: item.gender
+//                 };
+//                 arr.push(item.name)
+//                 namesList();
+//                 console.log(item.name)
+//                 return item.name;
+//             })
+//         })
+// }
+
+// const namesList = () => {
+//     getData().forEach(element => {
+//         let li = document.createElement('li');
+//         li.appendChild(document.createTextNode(element));
+//         ul.appendChild(li);
+//         li.className = "characterList";
+//     })
+// }
+// getData();
+
+  function fetchData() {
+      fetch(url).
+          then(res => {
+            return res.json();
+          }).
+          then(data => { 
+            const peoples = data.results.map(function(item) {
              arr.push(item.name)
              return item.name;
          })   
 
-       
          peoples.forEach(element => {
              let li = document.createElement('li');
              li.appendChild(document.createTextNode(element));
-
-                li.style.fontSize='24px';
-                li.style.fontFamily= 'Roboto';
-                li.style.fontStyle= 'normal';
-                li.style.fontWeight= 'normal';
-                li.style.fontSize= '20px';
-                li.style.lineHeight='20px';
-                li.style.letterSpacing='0.15em';
-                li.style.padding='0.5px';
-            
-                li.style.textAlign='center';
-                li.style.marginLeft='30px';
-                li.style.marginRight='60px';
-                
-             document.querySelector('ul').appendChild(li); 
+             ul.appendChild(li); 
+             li.className = "characterList"; 
          });  
     })
  }
- //#endregion
 
  fetchData()
     
  //#region  Details list
- function fetchDetails(){
-   
-    fetch(url).then(  function(res){
-        return res.json();
-    }).then(function(data){ 
-        const peoples= data.results.map(function(item){
-         
-            let properties= {
-                name: item.name,
-                mass:item.mass,
-                height:item.height,
-                gender:item.gender
+ function fetchDetails() {
+     fetch(url).
+         then(res => {
+            return res.json();
+         }).
+         then(data => { 
+            const peoples = data.results.map(item => {
+                let properties = {
+                    name: item.name,
+                    mass: item.mass,
+                    height: item.height,
+                    gender: item.gender
             };
-            //console.log(properties);
             return properties;
         })   
+
+             let li = document.querySelectorAll('li');
+             // console.log('person name is: ' + li[9].textContent)
+
+        if (li.length !== 0) {
+            for (let i = 0; i < li.length; i++) {
+                // console.log('list of people '+ li[i].textContent)
+                li[i].addEventListener('click', function() {
+                    // console.log('clicked ' + li[i].textContent)
+ 
+                    peoples.forEach(function(detailItem)  {    
+                    // if (li[i].textContent == peoples.map(detailIem => {
+                        console.log('detailed item found ' + detailIem.name)
+                    return detailItem[1].name
+                    //}))
+                    
+                    console.log('hej' + li[i].textContent);
+                let p = document.querySelector('#personDetails');
+    
+                p.appendChild(document.createTextNode(detailItem.gender + ","));
+                p.appendChild(document.createTextNode(detailItem.height + ","));
+                p.appendChild(document.createTextNode(detailItem.mass));
+         
+                let details = document.querySelector('.details');
+                details.appendChild(p);
+                        
+                    });
+              });
+            }
+          }
         
 
-      
-      let li= document.querySelector('li');
+    //    li.addEventListener('click',() => {
+    //     peoples.forEach(detailItem => {
+    //         if (arr[0] == detailItem.name) {
+    //             console.log('hej');
+    //         let p = document.querySelector('#personDetails');
 
-
-       li.addEventListener('click',() => {
-        peoples.forEach(detailItem => {
-            if (arr[0] == detailItem.name) {
-                console.log('hej');
-            let p = document.querySelector('#personDetails');
-
-            p.appendChild(document.createTextNode(detailItem.gender + ","));
-            p.appendChild(document.createTextNode(detailItem.height + ","));
-            p.appendChild(document.createTextNode(detailItem.mass));
+    //         p.appendChild(document.createTextNode(detailItem.gender + ","));
+    //         p.appendChild(document.createTextNode(detailItem.height + ","));
+    //         p.appendChild(document.createTextNode(detailItem.mass));
      
-            let details=document.querySelector('.details');
-            details.appendChild(p);
-            }
-         });
-       });
-   
+    //         let details = document.querySelector('.details');
+    //         details.appendChild(p);
+    //         }
+    //      });
+    //    });
 });
- }
+}
  //#endregion
 
  fetchDetails();
